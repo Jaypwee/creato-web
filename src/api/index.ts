@@ -42,8 +42,7 @@ export default async function api<T>(config: CreatoAxiosRequestConfig): Promise<
   const cheaders = { ...config.headers, 'X-CSRFToken': csrftoken };
 
   const headers = { ...creatoBaseHeaders, ...cheaders };
-  console.log(process.env.REACT_APP_API_HOST)
-  const url = `http://localhost:8000${config.url}`;
+  const url = `${process.env.REACT_APP_API_HOST}${config.url}`;
 
   const isExternalUrl = config.url.indexOf('://') > -1 || config.url.indexOf('//') > -1;
 
