@@ -61,7 +61,7 @@ const Login: React.FunctionComponent = (): JSX.Element => {
   const handleSignUp = async () => {
     try {
       const response = await signUp(data);
-      setIdx(1);
+      setIdx(2);
     } catch (e) {
       console.log(e);
       alert('There was an error. Please try again.');
