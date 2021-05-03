@@ -218,32 +218,18 @@ const AreaChart: React.FC = () => {
       // res.data.data.items.splice(16, 2);
       // setData(res.data.data.items);
       // console.log(res.data.data.items);
-     const tempData = [
-      {
-        tradeDate : '2021-04-28',
-        close: 5
-      },
-      {
-        tradeDate : '2021-04-29',
-        close: 5
-      },
-      {
-        tradeDate : '2021-04-30',
-        close: 5
-      },
-       {
-         tradeDate : '2021-05-01',
-         close: 5
-       },
-       {
-        tradeDate : '2021-05-02',
-        close: 5.1
-      },
-      {
-        tradeDate: '2021-05-03',
-        close: 5.2
+      const tempData: any[] = [];
+      let close = 6.3
+      const today = new Date();
+      for (let i = 0; i < 300; i += 1) {
+        tempData.push({
+          tradeDate: formatDate(today),
+          close
+        })
+        today.setDate(today.getDate() - 1);
+        close += (Math.random() * 0.1)
+        close -= (Math.random() * 0.1)
       }
-     ]
      setData(tempData);
     };
     fetchData();
@@ -554,20 +540,22 @@ const AreaChart: React.FC = () => {
             mPointer.attr('opacity', 1);
           }
         })
-        .on('mousedown.start', function snapshot(this) {
+        .on('mousedown.start', function snapshot(event) {
           isDragging = true;
-          [xSnapshot] = pointer(this);
+          [xSnapshot] = pointer(event);
         })
         .on('mouseup.end', () => {
           isDragging = false;
         })
-        .on('mousemove', function mouseEvent(this: any) {
-          const mouseVal = pointer(this);
+        .on('mousemove', function mouseEvent(event: any) {
+          const mouseVal = pointer(event);
+          console.log("OMFG", mouseVal)
           // Hover functionality
           const xData = x.invert(mouseVal[0] + dragTranslate);
           // 만원 단위로 반올림하는 로직이 추가되어있다.
           const yData = (Math.round(y.invert(mouseVal[1]) / 10000) * 10000).toString();
           const idx = bisectDate(data, xData.getTime());
+          console.log(idx)
           const d = new Date((data as any)[idx]?.tradeDate) || null;
           const yVal = computeBalance((data as any)[idx].close);
 

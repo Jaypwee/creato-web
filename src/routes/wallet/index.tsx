@@ -7,6 +7,8 @@ import { isoDatetimeToDisplay } from 'utils';
 import { unsubscribe } from 'api/token';
 import { SET_BALANCE } from 'reducers/balance';
 
+import AssetChart from 'components/graph/assetChart'
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -66,6 +68,7 @@ const Wallet: React.FunctionComponent = () => {
 
   return (
     <MaxWidth>
+      <AssetChart />
       <Container>
         <Title>Total USD Balance: {balance.usd} USD</Title>
         <Margin margin="0 0 32px" />
@@ -78,7 +81,7 @@ const Wallet: React.FunctionComponent = () => {
           </Card>
         ))}
         <Margin margin="0 0 32px" />
-        <Title>Owned Tokens</Title>
+        {/* <Title>Owned Tokens</Title>
         {
           balance.tokens.map(token => (
             <Card key={token.uuid}>
@@ -86,7 +89,7 @@ const Wallet: React.FunctionComponent = () => {
               <div>i</div>
             </Card>
           ))
-        }
+        } */}
       </Container>
     </MaxWidth>
   );

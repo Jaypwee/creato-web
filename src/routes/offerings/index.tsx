@@ -105,6 +105,7 @@ const TokenComponent: React.FC = () => {
       })
       const balance = await getBalance({ username });
       dispatch({ type: SET_BALANCE, payload: { usdBalance: balance.usdBalance }});
+      await initialize();
     } catch (e) {
       console.error(e);
       alert('Subscribe failed')
