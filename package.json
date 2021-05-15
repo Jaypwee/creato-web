@@ -2,6 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "engine": {
+    "node": "12.x"
+  },
   "dependencies": {
     "@loadable/component": "^5.14.1",
     "@testing-library/jest-dom": "^5.11.4",
