@@ -9,4 +9,5 @@ prod: tests
 	git push origin master
 
 dev_env: FORCE
+	yarn install
 	yarn start
