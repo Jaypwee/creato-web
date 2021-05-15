@@ -65,6 +65,7 @@ const Login: React.FunctionComponent = (): JSX.Element => {
     } catch (e) {
       console.log(e);
       alert('There was an error. Please try again.');
+      setIdx(1)
     }
   };
 
@@ -95,12 +96,12 @@ const Login: React.FunctionComponent = (): JSX.Element => {
               </>
             ) : idx === 1 ? (
               <>
-                <Subtitle>Email</Subtitle>
-                <Input type="email" name="email" onChange={handleInput} />
+                <Subtitle>Username</Subtitle>
+                <Input type="text" name="username" onChange={handleInput} />
                 <Subtitle>Password</Subtitle>
                 <Input type="password" name="password" onChange={handleInput} />
-                <Subtitle>Name</Subtitle>
-                <Input type="text" name="username" onChange={handleInput} />
+                <Subtitle>Email</Subtitle>
+                <Input type="email" name="email" onChange={handleInput} />
                 <Margin margin="0 0 32px" />
                 <ActionButton onClick={handleSignUp}>Sign Up</ActionButton>
               </>
